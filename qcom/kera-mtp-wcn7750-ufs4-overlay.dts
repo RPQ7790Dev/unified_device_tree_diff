@@ -6,11 +6,11 @@
 /dts-v1/;
 /plugin/;
 
-#include "kera-mtp-wcn7750-ufs4.dtsi"
+#include "kera-mtp-wcn7750-ufs2.dtsi"
 #include "kera-pm7550ba.dtsi"
 
 / {
-	model = "Qualcomm Technologies, Inc. Kera MTP + WCN7750 + UFS4";
+	model = "Qualcomm Technologies, Inc. Kera MTP + WCN7750 + UFS2";
 	compatible = "qcom,kera-mtp", "qcom,kera", "qcom,kerap-mtp", "qcom,kerap",
 			"qcom,mtp", "qcom,kera-qmb", "qcom,kerap-qna";
 	qcom,msm-id = <686 0x10000>, <659 0x10000>, <731 0x10000>, <732 0x10000>, <720 0x10000>, <721 0x10000>;

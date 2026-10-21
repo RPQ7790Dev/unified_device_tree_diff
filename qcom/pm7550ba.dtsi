@@ -318,7 +318,7 @@
 			};
 
 			socd_trip:socd-trip {
-				temperature = <90>;
+				temperature = <95>;
 				hysteresis = <0>;
 				type = "passive";
 			};

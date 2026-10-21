@@ -11,7 +11,7 @@
 		flash-source = <&pmxr2230_flash0 &pmxr2230_flash1>;
 		torch-source = <&pmxr2230_torch0 &pmxr2230_torch1>;
 		switch-source = <&pmxr2230_switch2>;
-		status = "ok";
+		status = "disabled";
 	};
 
 	led_flash_triple_rear_tele: qcom,camera-flash2 {
@@ -20,7 +20,7 @@
 		flash-source = <&pmxr2230_flash0 &pmxr2230_flash1>;
 		torch-source = <&pmxr2230_torch0 &pmxr2230_torch1>;
 		switch-source = <&pmxr2230_switch2>;
-		status = "ok";
+		status = "disabled";
 	};
 
 	led_flash_triple_rear_ultrawide: qcom,camera-flash3 {
@@ -29,7 +29,7 @@
 		flash-source = <&pmxr2230_flash0 &pmxr2230_flash1>;
 		torch-source = <&pmxr2230_torch0 &pmxr2230_torch1>;
 		switch-source = <&pmxr2230_switch2>;
-		status = "ok";
+		status = "disabled";
 	};
 
 	led_flash_rear_aux: qcom,camera-flash5 {
@@ -38,12 +38,12 @@
 		flash-source = <&pmxr2230_flash0 &pmxr2230_flash1>;
 		torch-source = <&pmxr2230_torch0 &pmxr2230_torch1>;
 		switch-source = <&pmxr2230_switch2>;
-		status = "ok";
+		status = "disabled";
 	};
 
 	qcom,cam-res-mgr {
 		compatible = "qcom,cam-res-mgr";
-		status = "ok";
+		status = "disabled";
 	};
 };
 
@@ -58,7 +58,7 @@
 		rgltr-min-voltage = <2800000>;
 		rgltr-max-voltage = <3000000>;
 		rgltr-load-current = <118930>;
-		status = "ok";
+		status = "disabled";
 	};
 
 	/* Actuator (UW) */
@@ -72,7 +72,7 @@
 		rgltr-min-voltage = <2800000>;
 		rgltr-max-voltage = <3000000>;
 		rgltr-load-current = <103360>;
-		status = "ok";
+		status = "disabled";
 	};
 
 	/* OIS (W) */
@@ -88,7 +88,7 @@
 		rgltr-min-voltage = <1800000 2800000 0>;
 		rgltr-max-voltage = <1980000 3000000 0>;
 		rgltr-load-current = <3500 220000 0>;
-		status = "ok";
+		status = "disabled";
 	};
 
 	/* EEPROM (W) */
@@ -125,7 +125,7 @@
 		clock-names = "cam_clk";
 		clock-cntl-level = "nominal";
 		clock-rates = <24000000>;
-		status = "ok";
+		status = "disabled";
 	};
 
 	/* EEPROM (UW) */
@@ -161,7 +161,7 @@
 		clock-names = "cam_clk";
 		clock-cntl-level = "nominal";
 		clock-rates = <24000000>;
-		status = "ok";
+		status = "disabled";
 	};
 
 	/* IMX858 (UWide) */
@@ -204,7 +204,7 @@
 		clock-names = "cam_clk";
 		clock-cntl-level = "nominal";
 		clock-rates = <24000000>;
-		status = "ok";
+		status = "disabled";
 	};
 
 	/* IMX766 + OIS (Wide) */
@@ -249,7 +249,7 @@
 		clock-names = "cam_clk";
 		clock-cntl-level = "nominal";
 		clock-rates = <24000000>;
-		status = "ok";
+		status = "disabled";
 	};
 
 
@@ -263,7 +263,7 @@
 		rgltr-min-voltage = <2960000>;
 		rgltr-max-voltage = <2960000>;
 		rgltr-load-current = <100000>;
-		status = "ok";
+		status = "disabled";
 	};
 
 	eeprom_rear_aux: qcom,eeprom8 {
@@ -299,7 +299,7 @@
 		clock-names = "cam_clk";
 		clock-cntl-level = "nominal";
 		clock-rates = <24000000>;
-		status = "ok";
+		status = "disabled";
 	};
 
 
@@ -344,7 +344,7 @@
 		clock-names = "cam_clk";
 		clock-cntl-level = "nominal";
 		clock-rates = <24000000>;
-		status = "ok";
+		status = "disabled";
 	};
 
 
@@ -362,7 +362,7 @@
 		rgltr-min-voltage = <2800000>;
 		rgltr-max-voltage = <3000000>;
 		rgltr-load-current = <130040>;
-		status = "ok";
+		status = "disabled";
 	};
 
 	/* EEPROM (Tele) */
@@ -398,7 +398,7 @@
 		clock-names = "cam_clk";
 		clock-cntl-level = "nominal";
 		clock-rates = <24000000>;
-		status = "ok";
+		status = "disabled";
 	};
 
 	/* EEPROM (Front) */
@@ -434,7 +434,7 @@
 		clock-names = "cam_clk";
 		clock-cntl-level = "nominal";
 		clock-rates = <24000000>;
-		status = "ok";
+		status = "disabled";
 	};
 
 	/* IMX688 (Front) */
@@ -475,7 +475,7 @@
 		clock-names = "cam_clk";
 		clock-cntl-level = "nominal";
 		clock-rates = <24000000>;
-		status = "ok";
+		status = "disabled";
 	};
 
 	/* JN1 (Tele) */
@@ -518,7 +518,7 @@
 		clock-names = "cam_clk";
 		clock-cntl-level = "nominal";
 		clock-rates = <24000000>;
-		status = "ok";
+		status = "disabled";
 	};
 
 };

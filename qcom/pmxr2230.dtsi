@@ -35,6 +35,11 @@
 			#interrupt-cells = <2>;
 		};
 
+		pmxr2230_pwm: pwm{
+			compatible = "qcom,pm8350c-pwm";
+			#pwm-cells = <2>;
+		};
+
 		led-controller {
 			compatible = "qcom,pm8350c-pwm";
 			#address-cells = <1>;

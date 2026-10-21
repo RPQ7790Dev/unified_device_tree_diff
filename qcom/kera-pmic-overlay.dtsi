@@ -5,9 +5,26 @@
 
 #include "tuna-pmic-overlay.dtsi"
 
+&pm8010_m {
+	status = "disabled";
+};
+
+&pm8010_n {
+	status = "disabled";
+};
+
+&pm8010m_tz {
+	status = "disabled";
+};
+
+&pm8010n_tz {
+	status = "disabled";
+};
+
 &pm8550ve_f {
 	status = "disabled";
 };
+
 
 &pm8550ve_f_temp_alarm {
 	status = "disabled";
@@ -24,3 +41,44 @@
 	};
 };
 
+
+&pmxr2230_gpios {
+	fan_pwm_ctrl {
+		fan_pwm_ctrl_default: fan_pwm_ctrl_default {
+			pins = "gpio8";
+			function = "func1";       /* Special Function 1 = PWM4 输出 */
+			input-disable;
+			output-enable;
+			bias-disable;
+			power-source = <1>;       /* 1.8V */
+			qcom,drive-strength = <2>;
+		};
+
+		fan_pwm_ctrl_sleep: fan_pwm_ctrl_sleep {
+			pins = "gpio8";
+			input-enable;
+			bias-pull-down;
+		};
+	};
+};
+
+&soc {
+	fan_controller {
+        compatible = "gpio5-pwm";
+		pwms = <&pmxr2230_pwm 3 40000>;
+        /* phandle=pmxr2230_pwm, channel=3, period=40000ns 25 kHz */
+		/* Default OFF; user space enables the fan via sysfs "state". */
+		gpio5-pwm-state = <0>;
+		gpio5-pwm-duty-ns = <10000>;
+		gpio5-pwm-period-ns = <40000>;
+		qcom,fan-en-gpio = <&tlmm 55 0>;
+		qcom,fan-fg-gpio = <&tlmm 3 0x2004>;
+		pinctrl-names = "default", "sleep";
+		pinctrl-0 = <&fan_pwm_ctrl_default
+				     &fan_en_default
+				     &fan_fg_default>;
+		pinctrl-1 = <&fan_pwm_ctrl_sleep
+				     &fan_en_sleep
+				     &fan_fg_sleep>;
+	};
+};

@@ -4,7 +4,7 @@
  */
 
 &mdss_mdp {
-	dsi_vtdr6130_amoled_cmd: qcom,mdss_dsi_vtdr6130_fhd_plus_cmd {
+	dsi_vtdr6130_amoled_cmd: qcom,mdss_dsi_vtdr6130_fhd_plus_cmd1 {
 		qcom,mdss-dsi-panel-name =
 			"vtdr6130 amoled cmd mode dsi visionox panel with DSC";
 		qcom,mdss-dsi-panel-type = "dsi_cmd_mode";

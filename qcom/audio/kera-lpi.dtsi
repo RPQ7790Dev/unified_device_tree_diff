@@ -157,12 +157,12 @@
 	quat_mi2s_sd3 {
 		quat_mi2s_sd3_sleep: quat_mi2s_sd3_sleep {
 			mux {
-				pins = "gpio5";
+				pins = "";
 				function = "func3";
 			};
 
 			config {
-				pins = "gpio5";
+				pins = "";
 				drive-strength = <2>;   /* 2 mA */
 				bias-pull-down;         /* PULL DOWN */
 				input-enable;
@@ -171,12 +171,12 @@
 
 		quat_mi2s_sd3_active: quat_mi2s_sd3_active {
 			mux {
-				pins = "gpio5";
+				pins = "";
 				function = "func3";
 			};
 
 			config {
-				pins = "gpio5";
+				pins = "";
 				drive-strength = <8>;   /* 8 mA */
 				bias-disable;           /* NO PULL */
 				output-high;
@@ -697,12 +697,12 @@
 	quat_tdm_sd3 {
 		quat_tdm_sd3_sleep: quat_tdm_sd3_sleep {
 			mux {
-				pins = "gpio5";
+				pins = "";
 				function = "func3";
 			};
 
 			config {
-				pins = "gpio5";
+				pins = "";
 				drive-strength = <2>;   /* 2 mA */
 				bias-pull-down;         /* PULL DOWN */
 				input-enable;
@@ -711,12 +711,12 @@
 
 		quat_tdm_sd3_active: quat_tdm_sd3_active {
 			mux {
-				pins = "gpio5";
+				pins = "";
 				function = "func3";
 			};
 
 			config {
-				pins = "gpio5";
+				pins = "";
 				drive-strength = <8>;   /* 8 mA */
 				bias-disable;           /* NO PULL */
 				output-high;
@@ -1243,12 +1243,12 @@
 	quat_aux_sd3 {
 		quat_aux_sd3_sleep: quat_aux_sd3_sleep {
 			mux {
-				pins = "gpio5";
+				pins = "";
 				function = "func2";
 			};
 
 			config {
-				pins = "gpio5";
+				pins = "";
 				drive-strength = <2>;   /* 2 mA */
 				bias-pull-down;         /* PULL DOWN */
 				input-enable;
@@ -1257,12 +1257,12 @@
 
 		quat_aux_sd3_active: quat_aux_sd3_active {
 			mux {
-				pins = "gpio5";
+				pins = "";
 				function = "func2";
 			};
 
 			config {
-				pins = "gpio5";
+				pins = "";
 				drive-strength = <8>;   /* 8 mA */
 				bias-disable;           /* NO PULL */
 				output-high;
@@ -1872,12 +1872,12 @@
 
 	rx_swr_data1_active: rx_swr_data1_active {
 		mux {
-			pins = "gpio5";
+			pins = "";
 			function = "func1";
 		};
 
 		config {
-			pins = "gpio5";
+			pins = "";
 			drive-strength = <2>;
 			slew-rate = <1>;
 			bias-bus-hold;
@@ -1887,12 +1887,12 @@
 
 	rx_swr_data1_sleep: rx_swr_data1_sleep {
 		mux {
-			pins = "gpio5";
+			pins = "";
 			function = "func1";
 		};
 
 		config {
-			pins = "gpio5";
+			pins = "";
 			drive-strength = <2>;
 			input-enable;
 			bias-pull-down;
@@ -2181,6 +2181,36 @@
 				drive-strength = <2>;
 				input-enable;
 				bias-pull-down;
+			};
+		};
+	};
+
+	lpi_i2s0_mclk {
+		lpi_i2s0_mclk_sleep: lpi_i2s0_mclk_sleep {
+			mux {
+				pins = "gpio5";
+				function = "func2";
+			};
+
+			config {
+				pins = "gpio5";
+				drive-strength = <2>;   /* 2 mA */
+				bias-pull-down;         /* PULL DOWN */
+				input-enable;
+			};
+		};
+
+		lpi_i2s0_mclk_active: lpi_i2s0_mclk_active {
+			mux {
+				pins = "gpio5";
+				function = "func2";
+			};
+
+			config {
+				pins = "gpio5";
+				drive-strength = <8>;   /* 8 mA */
+				bias-disable;           /* NO PULL */
+				output-high;
 			};
 		};
 	};

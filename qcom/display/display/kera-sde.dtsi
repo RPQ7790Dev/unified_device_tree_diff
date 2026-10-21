@@ -12,6 +12,61 @@
 #include <dt-bindings/interconnect/qcom,kera.h>
 #include <dt-bindings/arm/msm/qti-smmu-proxy-dt-ids.h>
 
+&tlmm {
+	usb_sw_en_default: usb_sw_en_default {
+		mux {
+			pins = "gpio75";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio75";
+			drive-strength = <8>;
+			bias-disable = <0>;
+		};
+	};
+
+	usb_sw_sel_default: usb_sw_sel_default {
+		mux {
+			pins = "gpio76";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio76";
+			drive-strength = <8>;
+			bias-disable = <0>;
+		};
+	};
+
+	usb_sw_en_sleep: usb_sw_en_sleep {
+		mux {
+			pins = "gpio75";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio75";
+			drive-strength = <2>;
+			bias-pull-down;
+		};
+	};
+
+	usb_sw_sel_sleep: usb_sw_sel_sleep {
+		mux {
+			pins = "gpio76";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio76";
+			drive-strength = <2>;
+			bias-pull-down;
+		};
+	};
+};
+
+
 &soc {
 	ext_disp: qcom,msm-ext-disp {
 		compatible = "qcom,msm-ext-disp";
@@ -140,11 +195,19 @@
 		compatible = "qcom,dp-display";
 		status = "ok";
 
+		pinctrl-names = "mdss_dp_active", "mdss_dp_sleep";
+		pinctrl-0 = <&usb_sw_en_default &usb_sw_sel_default>;
+		pinctrl-1 = <&usb_sw_en_sleep &usb_sw_sel_sleep>;
+
 		usb-phy = <&usb_qmp_dp_phy>;
 		qcom,ext-disp = <&ext_disp>;
 		usb-controller = <&usb0>;
 		qcom,altmode-dev = <&altmode 0>;
-		qcom,dp-aux-switch = <&wcd_usbss>;
+		//qcom,dp-aux-switch = <&wcd_usbss>;
+		qcom,dp-aux-switch = <&sde_dp>;
+		qcom,aux-en-gpio = <&tlmm 75 0>;
+		qcom,aux-sel-gpio = <&tlmm 76 0>;
+		qcom,dp-gpio-aux-switch;
 
 		reg =  <0xaf54000 0x104>,
 			<0xaf54200 0x0c0>,

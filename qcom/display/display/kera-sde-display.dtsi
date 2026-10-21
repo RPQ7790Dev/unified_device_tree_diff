@@ -14,6 +14,75 @@
 		clocks = <&dispcc DISP_CC_MDSS_MDP_CLK>;
 		clock-names = "mdp_core_clk";
 	};
+	
+	display_panel_vddio: display_gpio_regulator@1 {
+               compatible = "qti-regulator-fixed";
+               regulator-name = "display_panel_vddio";
+               regulator-min-microvolt = <1800000>;
+               regulator-max-microvolt = <1800000>;
+               regulator-enable-ramp-delay = <233>;
+               gpio = <&tlmm 69 0>;
+               enable-active-high;
+            //    regulator-boot-on;
+            //    proxy-supply = <&display_panel_vddio>;
+            //    qcom,proxy-consumer-enable;
+               pinctrl-names = "default";
+       };
+
+      display_panel_vci: display_gpio_regulator@2 {
+               compatible = "qti-regulator-fixed";
+               regulator-name = "display_panel_vci";
+               regulator-min-microvolt = <3000000>;
+               regulator-max-microvolt = <3000000>;
+               regulator-enable-ramp-delay = <233>;
+               gpio = <&tlmm 70 0>;
+               enable-active-high;
+               // regulator-boot-on;
+               // proxy-supply = <&display_panel_vci>;
+               // qcom,proxy-consumer-enable;
+               pinctrl-names = "default";
+       };
+
+	   vcc_i2c_pwr: tp_gpio_regulator@3 {
+               compatible = "qti-regulator-fixed";
+               regulator-name = "vcc_i2c_pwr";
+               regulator-min-microvolt = <1800000>;
+               regulator-max-microvolt = <1800000>;
+               regulator-enable-ramp-delay = <233>;
+               gpio = <&tlmm 74 0>;
+               enable-active-high;
+            //    regulator-boot-on;
+            //    proxy-supply = <&vcc_i2c_pwr>;
+            //    qcom,proxy-consumer-enable;
+               pinctrl-names = "default";
+       };
+	   vcc_i2c_pwr_sec: tp_gpio_regulator@4 {
+               compatible = "qti-regulator-fixed";
+               regulator-name = "vcc_i2c_pwr_sec";
+               regulator-min-microvolt = <1800000>;
+               regulator-max-microvolt = <1800000>;
+               regulator-enable-ramp-delay = <233>;
+               gpio = <&tlmm 71 0>;
+               enable-active-high;
+            //    regulator-boot-on;
+            //    proxy-supply = <&vcc_i2c_pwr_sec>;
+            //    qcom,proxy-consumer-enable;
+               pinctrl-names = "default";
+       };
+
+	   avdd_pwr_sec: tp_gpio_regulator@5 {
+               compatible = "qti-regulator-fixed";
+               regulator-name = "avdd_pwr_sec";
+               regulator-min-microvolt = <3000000>;
+               regulator-max-microvolt = <3000000>;
+               regulator-enable-ramp-delay = <233>;
+               gpio = <&tlmm 72 0>;
+               enable-active-high;
+            //    regulator-boot-on;
+            //    proxy-supply = <&avdd_pwr_sec>;
+            //    qcom,proxy-consumer-enable;
+               pinctrl-names = "default";
+       };
 
 	disp_rdump_memory: disp_rdump_region@0xfc800000 {
 		reg = <0xfc800000 0x00800000>;
@@ -81,9 +150,11 @@
 		      "pll_byte_clk1", "pll_dsi_clk1",
 		      "mdp_core_clk";
 
-	vddio-supply = <&L8B>;
-	vci-supply = <&L19B>;
+	//vddio-supply = <&L8B>;
+	//vci-supply = <&L19B>;
 	vdd-supply = <&L1G>;
+	vddio-supply = <&display_panel_vddio>;  //69
+	vci-supply = <&display_panel_vci>;   //70
 };
 
 &mdss_mdp {

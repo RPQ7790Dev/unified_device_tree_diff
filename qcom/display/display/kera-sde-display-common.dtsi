@@ -27,6 +27,8 @@
 #include "dsi-panel-vtdr6130-dsc-fhd-plus-60hz-video.dtsi"
 #include "dsi-panel-vtdr6130-qsync-dsc-fhd-plus-144hz-cmd.dtsi"
 #include "dsi-panel-vtdr6130-qsync-dsc-fhd-plus-144hz-video.dtsi"
+#include "dsi-panel-il97680a-xing-960p-120hz-cmd.dtsi"
+#include "dsi-panel-vtdr6130-visionox-cog-1080p-cmd.dtsi"
 
 #include "kera-sde-display-pinctrl.dtsi"
 
@@ -145,6 +147,52 @@
 };
 
 /* PHY TIMINGS REVISION YL with reduced margins */
+
+&vtdr6130_visionox_cog_1080p {
+       qcom,dsi-select-clocks = "pll_byte_clk0", "pll_dsi_clk0";
+//       qcom,esd-check-enabled;
+  //     qcom,mdss-dsi-panel-status-check-mode = "reg_read";
+  //     qcom,mdss-dsi-panel-status-command = [06 01 00 01 00 00 01 0a];
+   //    qcom,mdss-dsi-panel-status-command-state = "dsi_lp_mode";
+   //    qcom,mdss-dsi-panel-status-value = <0x9c>;
+   //    qcom,mdss-dsi-panel-status-read-length = <1>;
+
+       // qcom,mdss-dsi-panel-hdr-enabled;
+        qcom,mdss-dsi-display-timings {
+    timing@0{
+      qcom,mdss-dsi-panel-phy-timings = [00 15 05 05 14 1F 05
+        05 06 02 04 00 13 0A];
+      qcom,display-topology = <2 2 1>,<1 1 1>;
+      qcom,default-topology-index = <0>;
+    };
+
+    timing@1{
+        qcom,mdss-dsi-panel-phy-timings = [00 15 05 05 14 13 05
+            05 06 02 04 00 13 0A];
+        qcom,display-topology = <2 2 1>,<1 1 1>;
+        qcom,default-topology-index = <0>;
+    };
+  };
+};
+
+&dsi_il97680a_960p_cmd {
+       qcom,dsi-select-sec-clocks = "pll_byte_clk1", "pll_dsi_clk1";
+       qcom,mdss-dsi-display-timings {
+               timing@0{
+                       qcom,mdss-dsi-panel-phy-timings = [00 20 08 08 18 17 08
+                               08 08 02 04 00 1B 0D];
+                       qcom,display-topology = <1 0 1>;
+                       qcom,default-topology-index = <0>;
+               };
+
+               timing@1{
+                   qcom,mdss-dsi-panel-phy-timings = [00 20 08 08 18 17 08
+                               08 08 02 04 00 1B 0D];
+                   qcom,display-topology = <1 0 1>;
+                   qcom,default-topology-index = <0>;
+               };
+       };
+};
 
 &dsi_vtdr6130_amoled_cmd {
 	qcom,dsi-select-clocks = "pll_byte_clk0", "pll_dsi_clk0";

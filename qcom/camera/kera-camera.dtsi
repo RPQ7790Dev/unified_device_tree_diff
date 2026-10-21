@@ -10,12 +10,12 @@
 	cci_i2c_sda0_active: cci_i2c_sda0_active {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio70";
+			//pins = "gpio70";
 			function = "cci_i2c_sda0";
 		};
 
 		config {
-			pins = "gpio70";
+		//	pins = "gpio70";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
 			qcom,i2c_pull;
@@ -25,12 +25,12 @@
 	cci_i2c_sda0_suspend: cci_i2c_sda0_suspend {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio70";
+		//	pins = "gpio70";
 			function = "cci_i2c_sda0";
 		};
 
 		config {
-			pins = "gpio70";
+		//	pins = "gpio70";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 		};

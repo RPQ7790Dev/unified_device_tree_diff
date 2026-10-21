@@ -316,9 +316,9 @@
 		L12B: pmxr2230_l12: vreg-pmxr2230-l12 {
 			regulator-name = "pmxr2230_l12";
 			qcom,set = <RPMH_REGULATOR_SET_ALL>;
-			regulator-min-microvolt = <2400000>;
+			regulator-min-microvolt = <2900000>;
 			regulator-max-microvolt = <3300000>;
-			qcom,init-voltage = <2504000>;
+			qcom,init-voltage = <2952000>;
 			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
 		};
 	};
@@ -986,6 +986,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		status = "disabled";
 
 		L1M: pm8010m_l1: vreg-pm8010m-l1 {
 			regulator-name = "pm8010m_l1";
@@ -1005,6 +1006,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		status = "disabled";
 
 		L2M: pm8010m_l2: vreg-pm8010m-l2 {
 			regulator-name = "pm8010m_l2";
@@ -1019,6 +1021,7 @@
 	rpmh-regulator-ldom3 {
 		compatible = "qcom,rpmh-vrm-regulator";
 		qcom,resource-name = "ldom3";
+		status = "disabled";
 
 		L3M: pm8010m_l3: vreg-pm8010m-l3 {
 			regulator-name = "pm8010m_l3";
@@ -1032,6 +1035,7 @@
 	rpmh-regulator-ldom4 {
 		compatible = "qcom,rpmh-vrm-regulator";
 		qcom,resource-name = "ldom4";
+		status = "disabled";
 
 		L4M: pm8010m_l4: vreg-pm8010m-l4 {
 			regulator-name = "pm8010m_l4";
@@ -1045,6 +1049,7 @@
 	rpmh-regulator-ldom5 {
 		compatible = "qcom,rpmh-vrm-regulator";
 		qcom,resource-name = "ldom5";
+		status = "disabled";
 
 		L5M: pm8010m_l5: vreg-pm8010m-l5 {
 			regulator-name = "pm8010m_l5";
@@ -1058,6 +1063,7 @@
 	rpmh-regulator-ldom6 {
 		compatible = "qcom,rpmh-vrm-regulator";
 		qcom,resource-name = "ldom6";
+		status = "disabled";
 
 		L6M: pm8010m_l6: vreg-pm8010m-l6 {
 			regulator-name = "pm8010m_l6";
@@ -1071,6 +1077,7 @@
 	rpmh-regulator-ldom7 {
 		compatible = "qcom,rpmh-vrm-regulator";
 		qcom,resource-name = "ldom7";
+		status = "disabled";
 
 		L7M: pm8010m_l7: vreg-pm8010m-l7 {
 			regulator-name = "pm8010m_l7";
@@ -1089,6 +1096,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		status = "disabled";
 
 		L1N: pm8010n_l1: vreg-pm8010n-l1 {
 			regulator-name = "pm8010n_l1";
@@ -1108,6 +1116,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		status = "disabled";
 
 		L2N: pm8010n_l2: vreg-pm8010n-l2 {
 			regulator-name = "pm8010n_l2";
@@ -1122,6 +1131,7 @@
 	rpmh-regulator-ldon3 {
 		compatible = "qcom,rpmh-vrm-regulator";
 		qcom,resource-name = "ldon3";
+		status = "disabled";
 
 		L3N: pm8010n_l3: vreg-pm8010n-l3 {
 			regulator-name = "pm8010n_l3";
@@ -1135,6 +1145,7 @@
 	rpmh-regulator-ldon4 {
 		compatible = "qcom,rpmh-vrm-regulator";
 		qcom,resource-name = "ldon4";
+		status = "disabled";
 
 		L4N: pm8010n_l4: vreg-pm8010n-l4 {
 			regulator-name = "pm8010n_l4";
@@ -1148,6 +1159,7 @@
 	rpmh-regulator-ldon5 {
 		compatible = "qcom,rpmh-vrm-regulator";
 		qcom,resource-name = "ldon5";
+		status = "disabled";
 
 		L5N: pm8010n_l5: vreg-pm8010n-l5 {
 			regulator-name = "pm8010n_l5";
@@ -1161,6 +1173,7 @@
 	rpmh-regulator-ldon6 {
 		compatible = "qcom,rpmh-vrm-regulator";
 		qcom,resource-name = "ldon6";
+		status = "disabled";
 
 		L6N: pm8010n_l6: vreg-pm8010n-l6 {
 			regulator-name = "pm8010n_l6";
@@ -1174,6 +1187,7 @@
 	rpmh-regulator-ldon7 {
 		compatible = "qcom,rpmh-vrm-regulator";
 		qcom,resource-name = "ldon7";
+		status = "disabled";
 
 		L7N: pm8010n_l7: vreg-pm8010n-l7 {
 			regulator-name = "pm8010n_l7";

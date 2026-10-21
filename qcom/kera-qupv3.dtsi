@@ -560,6 +560,34 @@
 			status = "disabled";
 		};
 
+		qupv3_se10_uart: uart@888000 {
+			compatible = "qcom,msm-geni-serial-hs";
+			reg = <0x888000 0x4000>;
+			reg-names = "se_phys";
+			#address-cells = <1>;
+			#size-cells = <0>;
+			interrupts-extended = <&intc GIC_SPI 584 IRQ_TYPE_LEVEL_HIGH>,
+					<&tlmm 11 IRQ_TYPE_LEVEL_HIGH>;
+			clock-names = "se-clk";
+			clocks = <&gcc GCC_QUPV3_WRAP2_S2_CLK>;
+			interconnect-names = "qup-core", "qup-config", "qup-memory";
+			interconnects =
+			<&clk_virt MASTER_QUP_CORE_2 &clk_virt SLAVE_QUP_CORE_2>,
+			<&gem_noc MASTER_APPSS_PROC &config_noc SLAVE_QUP_2>,
+			<&aggre2_noc MASTER_QUP_2 &mc_virt SLAVE_EBI1>;
+			pinctrl-names = "default", "active", "sleep", "shutdown";
+			pinctrl-0 = <&qupv3_se10_uart_sleep>;
+			pinctrl-1 = <&qupv3_se10_uart_txd_active>,
+				<&qupv3_se10_uart_rxd_active>;
+			pinctrl-2 = <&qupv3_se10_uart_sleep>;
+			pinctrl-3 = <&qupv3_se10_uart_sleep>;
+			dma-names = "tx", "rx";
+			qcom,wakeup-byte = <0xFD>;
+			qcom,suspend-ignore-children;
+			qcom,auto-suspend-disable;
+			status = "okay";
+		};
+
 		qupv3_se10_i2c: i2c@888000 {
 			compatible = "qcom,i2c-geni";
 			reg = <0x888000 0x4000>;
@@ -813,5 +841,15 @@
 			spi-max-frequency = <50000000>;
 			status = "disabled";
 		};
+	};
+
+	/* MCU Power Control Node */
+	mcu_power_ctrl: mcu_power_ctrl {
+		compatible = "mcu-power-ctrl";
+		pinctrl-names = "default", "sleep";
+		pinctrl-0 = <&uart_power_default>, <&mcu_power_default>;
+		pinctrl-1 = <&uart_power_sleep>, <&mcu_power_sleep>;
+		uart_power_gpio = <&tlmm 54 GPIO_ACTIVE_HIGH>;
+		mcu_power_gpio = <&tlmm 56 GPIO_ACTIVE_HIGH>;
 	};
 };

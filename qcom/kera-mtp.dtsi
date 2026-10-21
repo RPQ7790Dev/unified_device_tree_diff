@@ -34,14 +34,14 @@
 	interrupt-names = "usb_wcd";
 	nvmem-cells = <&usb_mode>;
 	nvmem-cell-names = "usb_mode";
-	status = "ok";
+	status = "disabled";
 };
 
 &qupv3_se8_spi {
 	#address-cells = <1>;
 	#size-cells = <0>;
 
-	status = "ok";
+	status = "disabled";
 	qcom,touch-active = "goodix,gt9916S";
 	qcom,la-vm;
 
@@ -91,7 +91,7 @@
 };
 
 &usb0 {
-	qcom,wcd_usbss = <&wcd_usbss>;
+        //qcom,wcd_usbss = <&wcd_usbss>;
 };
 
 &regulator_ocp_notifier {
@@ -133,18 +133,54 @@
 	periph-6c1-supply = <&L1G>;
 	periph-6c2-supply = <&L2G>;
 	periph-6c3-supply = <&L3G>;
-	periph-c40-supply = <&L1M>;
-	periph-c41-supply = <&L2M>;
-	periph-c42-supply = <&L3M>;
-	periph-c43-supply = <&L4M>;
-	periph-c44-supply = <&L5M>;
-	periph-c45-supply = <&L6M>;
-	periph-c46-supply = <&L7M>;
-	periph-d40-supply = <&L1N>;
-	periph-d41-supply = <&L2N>;
-	periph-d42-supply = <&L3N>;
-	periph-d43-supply = <&L4N>;
-	periph-d44-supply = <&L5N>;
-	periph-d45-supply = <&L6N>;
-	periph-d46-supply = <&L7N>;
+};
+
+&soc {
+	hall_switch: hall@0 {
+	    compatible = "qcom,hall-switch";
+	    hall-gpio = <&tlmm 31 0>;
+	    pinctrl-names = "default";
+	    pinctrl-0 = <&hall_int_gpio>;
+	};
+
+	extcon_demo: extcon-demo {
+		compatible = "extcon_demo";
+		status = "okay";
+	};
+};
+
+&qupv3_se2_i2c {
+	clock-frequency = <400000>;
+	status = "ok";
+	haptic_hv@5A {
+		compatible = "awinic,haptic_hv";
+		reg = < 0x5A >;
+		irq-gpio = < &tlmm 125 0 >;
+		reset-gpio = < &tlmm 68 0 >;
+		pinctrl-names = "default";
+		pinctrl-0 = < &ics_haptic_pinctrl_default>;
+		f0_pre = < 2600 >;
+		mode = /bits/ 8 < 5 >;
+
+		aw8692x_f0_cali_percent = /bits/ 8 < 15 >;
+		aw8692x_gain_bypass = /bits/ 8 < 1 >;
+		aw8692x_uvlo_vol_default = /bits/ 8 < 0 >;
+		aw8692x_cont_smart_loop = /bits/ 8 < 0 >;
+		aw8692x_cont_drv1_lvl = /bits/ 8 < 0x7F >;
+		aw8692x_cont_lra_vrms = < 1000 >;
+		aw8692x_cont_brk_time = /bits/ 8 < 0x08 >;
+		aw8692x_cont_track_margin = /bits/ 8 < 0x0F >;
+		aw8692x_cont_brk_gain = /bits/ 8 < 0x08 >;
+		aw8692x_cont_drv1_time = /bits/ 8 < 0x04 >;
+		aw8692x_cont_drv2_time = /bits/ 8 < 0x14 >;
+		aw8692x_duration_time = /bits/ 8 < 20 30 60 >;
+		aw8692x_d2s_gain = /bits/ 8 < 0x04 >;
+		aw8692x_trig_config = /bits/ 8 < 0 0 0 1 0 2 0 0
+						 0 0 0 1 0 2 0 0
+						 0 0 0 1 0 2 0 0 >;
+		aw8692x_bst_vol_default = < 8000 >;
+		aw8692x_is_enabled_track_en;
+		/* aw8692x_is_enabled_auto_bst; */
+		/* aw8692x_is_enabled_one_wire; */
+	};
 };

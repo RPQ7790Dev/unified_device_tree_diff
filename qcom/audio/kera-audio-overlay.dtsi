@@ -10,7 +10,7 @@
 #include "kera-lpi.dtsi"
 
 &lpass_cdc {
-	qcom,num-macros = <4>;
+	qcom,num-macros = <3>;
 	qcom,lpass-cdc-version = <7>;
 	#address-cells = <1>;
 	#size-cells = <1>;
@@ -78,6 +78,7 @@
 			qcom,swr-mstr-irq-wakeup-capable = <1>;
 			qcom,is-always-on = <1>;
 			wcd9378_tx_slave: wcd9378-tx-slave {
+				status = "disabled";
 				compatible = "qcom,wcd9378-slave";
 				reg = <0x10 0x01170223>;
 			};
@@ -153,7 +154,7 @@
 			wcd9378_rx_slave: wcd9378-rx-slave {
 				compatible = "qcom,wcd9378-slave";
 				reg = <0x10 0x01170224>;
-				status = "okay";
+				status = "disabled";
 			};
 
 			wcd939x_rx_slave: wcd939x-rx-slave {
@@ -228,6 +229,7 @@
 
 			wsa884x_0221: wsa884x@02170221 {
 				compatible = "qcom,wsa884x";
+				status = "disabled";
 				reg = <0x4 0x2170221>;
 				qcom,spkr-sd-n-node = <&wsa_spkr_en13>;
 				qcom,lpass-cdc-handle = <&lpass_cdc>;
@@ -348,6 +350,7 @@
 	};
 
 	wcd9378_codec: wcd9378-codec {
+		status = "disabled";
 		compatible = "qcom,wcd9378-codec";
 		qcom,split-codec = <1>;
 		qcom,wcd-mode = <1>;
@@ -437,6 +440,7 @@
 		qcom,model = "kera-qrd-snd-card";
 		qcom,msm-mi2s-master = <1>, <1>, <1>, <1>, <1>, <1>, <1>;
 		qcom,mi2s-tdm-is-hw-vote-needed = <1>, <1>, <1>, <1>, <1>, <1>, <1>;
+		qcom,wcd-disabled = <1>;
 		qcom,wcn-bt = <1>;
 		qcom,ext-disp-audio-rx = <1>;
 		qcom,tdm-max-slots = <8>;
@@ -471,14 +475,10 @@
 			"IN1_HPHL", "HPHL_OUT",
 			"IN2_HPHR", "HPHR_OUT",
 			"IN3_AUX", "AUX_OUT",
-			"WSA SRC0_INP", "SRC0",
-			"WSA_TX DEC0_INP", "TX DEC0 MUX",
-			"WSA_TX DEC1_INP", "TX DEC1 MUX",
 			"RX_TX DEC0_INP", "TX DEC0 MUX",
 			"RX_TX DEC1_INP", "TX DEC1 MUX",
 			"RX_TX DEC2_INP", "TX DEC2 MUX",
 			"RX_TX DEC3_INP", "TX DEC3 MUX",
-			"SpkrLeft IN", "WSA_SPK1 OUT",
 			"VA SWR_INPUT", "VA_SWR_CLK",
 			"VA_AIF1 CAP", "VA_SWR_CLK",
 			"VA_AIF2 CAP", "VA_SWR_CLK",
@@ -491,14 +491,12 @@
 			"VA DMIC1", "VA MIC BIAS3",
 			"VA DMIC2", "VA MIC BIAS1",
 			"VA DMIC3", "VA MIC BIAS1";
-		asoc-codec  = <&stub_codec>, <&lpass_cdc>,
-			<&wcd9378_codec>, <&wsa884x_0221>;
-		asoc-codec-names = "msm-stub-codec.1", "lpass-cdc",
-				"wcd9378_codec", "wsa-codec2";
+		asoc-codec  = <&stub_codec>, <&lpass_cdc>;
+		asoc-codec-names = "msm-stub-codec.1", "lpass-cdc";
 		qcom,msm-mbhc-usbc-audio-supported = <1>;
 		qcom,msm-mbhc-hphl-swh = <0>;
 		qcom,msm-mbhc-gnd-swh = <0>;
-		qcom,wsa-max-devs = <1>;
+		qcom,wsa-max-devs = <0>;
 		qcom,cdc-dmic01-gpios = <&cdc_dmic01_gpios>;
 		qcom,cdc-dmic23-gpios = <&cdc_dmic23_gpios>;
 		qcom,msm_audio_ssr_devs = <&audio_gpr>, <&lpi_tlmm>,
@@ -507,7 +505,7 @@
 	};
 
 	cdc_pri_mi2s_gpios: pri_mi2s_pinctrl {
-		status = "disabled";
+		status = "okay";
 		compatible = "qcom,msm-cdc-pinctrl";
 		pinctrl-names = "aud_active", "aud_sleep";
 		pinctrl-0 = <&i2s0_sck_active &i2s0_ws_active
@@ -662,6 +660,7 @@
 
 &soc {
 	wsa_spkr_en02: wsa_spkr_en1_pinctrl {
+		status = "disabled";
 		compatible = "qcom,msm-cdc-pinctrl";
 		pinctrl-names = "aud_active", "aud_sleep";
 		pinctrl-0 = <&spkr_1_sd_n_active>;
@@ -670,6 +669,7 @@
 	};
 
 	wsa_spkr_en13: wsa_spkr_en2_pinctrl {
+		status = "disabled";
 		compatible = "qcom,msm-cdc-pinctrl";
 		pinctrl-names = "aud_active", "aud_sleep";
 		pinctrl-0 = <&spkr_2_sd_n_active>;

@@ -42,6 +42,7 @@
 		mmc0 = &sdhc_1; /* SDC1 eMMC slot */
 		mmc1 = &sdhc_2; /* SDC2 SD card slot */
 		hsuart0 = &qupv3_se5_4uart;
+		hsuart1 = &qupv3_se10_uart;
 		i2c0 = &qupv3_se0_i2c;
 		i2c1 = &qupv3_se1_i2c;
 		i2c2 = &qupv3_se2_i2c;
@@ -3587,7 +3588,7 @@
 	interconnects = <&mmss_noc MASTER_CAMNOC_HF &mmss_noc SLAVE_MNOC_HF_MEM_NOC>;
 	interconnect-names = "mmnoc";
 	parent-supply = <&VDD_CX_LEVEL>;
-	status = "ok";
+	status = "disabled";
 };
 
 &disp_cc_mdss_core_gdsc {
@@ -3751,4 +3752,29 @@
 		vdd-usb-cp-supply = <&L7B>;
 	};
 };
+
+&qupv3_se0_i2c {
+	status = "ok";
+};
+
+&soc {
+	codec_vdd_1v8: codec_vdd_1v8 {
+		compatible = "regulator-fixed";
+		regulator-name = "codec_vdd_1v8";
+		gpio = <&tlmm 163 GPIO_ACTIVE_HIGH>;
+		regulator-min-microvolt = <1800000>;
+		regulator-max-microvolt = <1800000>;
+		enable-active-high;
+	};
+
+	codec_vdd_3v3: codec_vdd_3v3 {
+		compatible = "regulator-fixed";
+		regulator-name = "codec_vdd_3v3";
+		gpio = <&tlmm 164 GPIO_ACTIVE_HIGH>;
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		enable-active-high;
+	};
+};
+
 #include "kera-thermal-overlay.dtsi"
